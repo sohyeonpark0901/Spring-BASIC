@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:c="http://www.springframework.org/schema/c"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="print" class="com.java.di06.PrintA">
+      <property name="printStr" value="프린터 출력입니다"></property>
+   </bean>
+   <bean id="printA" class="com.java.di06.PrintA" p:printStr="프로퍼티 네임스페이스를 통한 출력입니다"></bean>
+   <bean id="printB" class="com.java.di06.PrintB" c:printStr="생성자 네임스페이스를 통한 출력입니다"></bean>
+   <bean id="excel" class="com.java.di06.Excel">
+      <property name="print" ref="print"></property>
+      <property name="printList">
+         <list>
+            <bean id="print-A"  class="com.java.di06.PrintA" p:printStr="프로퍼티 네임스페이스를 통한 출력입니다"></bean>
+            <bean id="print-B" class="com.java.di06.PrintB">
+               <constructor-arg value="생성자를 이용해서 출력"></constructor-arg>
+            </bean>
+         </list>
+      </property>
+   </bean>
+   
+
+</beans>
