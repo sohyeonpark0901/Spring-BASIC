@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<!-- 공통 클래스 -->
+<bean id="advice" class="com.java.aop05.AopAspect"/>
+<!-- 핵심 클래스 -->
+<bean class="com.java.aop05.AopTest"/>
+
+<aop:config>
+	<!-- pointcut : 핵심기능 메소드를 찾는 역할 -->
+	<!-- within() 특정 클래스에 속하는 method를 JoinPoint로 설정되도록 명시 -->
+	<!-- within(com.java.aop.*) -->
+	<!-- execution 공통클래스의 메소드(advice)를 적용할 메소드를 명시 -->
+	<!-- execution([수식어] 리턴타입 경로) -->
+	<!-- com.java.aop05 하위 클래스 중 Test로 끝나는 클래스의 파라미터 변수가 0개 이상 메소드 -->
+	<!-- execution(* com.java.aop05..*Test.*(..) -->
+	<!--  메소드 이름이 print이고 파라미터 타입이 2개이다. -->
+	<!-- execution(* print*(*,*) -->
+	<aop:pointcut expression="execution(void com.java.aop05..AopTest.method*(..))" id="aopTest"/>
+	<aop:aspect ref="advice">
+		<aop:before method="before" pointcut-ref="aopTest"/>
+		<aop:after method="after" pointcut-ref="aopTest"/>
+		<!--  <aop:around method = "around" pointcut-ref="aopTest"/> -->
+	</aop:aspect>
+</aop:config>
+</beans>

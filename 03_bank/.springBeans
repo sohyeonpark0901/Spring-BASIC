@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/com/java/aop05/config.xml</config>
+		<config>src/config.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
