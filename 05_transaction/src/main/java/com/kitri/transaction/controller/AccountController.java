@@ -20,7 +20,12 @@ public class AccountController {
 		return "account";
 	}
 	
-	
+	@RequestMapping("/transfer")
+	public String transfer(int money,String accountNum) throws Exception {
+		
+		service.transfer(money,accountNum);
+		return "transfer-ok";
+	}
 	
 	
 }
