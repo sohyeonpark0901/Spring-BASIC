@@ -11,22 +11,15 @@ public class MemberController {
 	
 	@RequestMapping("/login")
 	public String login(HttpSession session) {
-		
 		session.setAttribute("login", "id");
-		
 		return "redirect: /visitor/visit";
-		
 	}
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		
-		if(session.getAttribute("login")!=null) {
+		if (session.getAttribute("login")!=null) {
 			session.invalidate();
 		}
-		
-		
 		return "redirect: /visitor/visit";
-		
 	}
-	
+
 }

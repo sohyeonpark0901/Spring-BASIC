@@ -18,16 +18,16 @@ public class LoginInterceptor implements HandlerInterceptor{
 		String id = (String)session.getAttribute("login");
 		
 		boolean flag = false;
-		if(id!=null) {
+		
+		if (id!=null) {
 			//로그인 상태
 			flag = true;
-		}else {
-			//로그인이 안되어있는 상태
-			//즉 로그아웃 상태
-			flag=false;
+		} else {
+			//로그인이 안되어있는 상태 즉 로그아웃 상태
+			
+			flag = false;
 			response.sendRedirect("/visit?msg=test");
 		}
-		
 		return flag;
 	}
 

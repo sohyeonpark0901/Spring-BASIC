@@ -28,7 +28,8 @@
 			<mapping path="/visit/v-regist"/>
 			<mapping path="/visit/delete"/>
 			<beans:bean id="interceptor" class="com.kitri.visitor.interceptor.LoginInterceptor"></beans:bean>
-		</interceptor>
+		</interceptor>	
 	</interceptors>
+	
 	
 </beans:beans>
